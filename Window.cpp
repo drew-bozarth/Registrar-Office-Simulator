@@ -1,6 +1,11 @@
 #include "Window.h"
 
+//when implementing window, create a double pointer array and initialize
 Window::Window(){}
+
+Window::Window(Student s1){
+  newStudent = s1;
+}
 
 Window::~Window(){}
 

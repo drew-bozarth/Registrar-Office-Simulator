@@ -9,17 +9,19 @@
 class Window{
 public:
   Window();
+  Window(Student s1);
   ~Window();
   bool isAvailable();
-  void fillWindow(Student s1);
+  void setWindowBusy();
   void emptyWindow();
   void setIdleTime();
   int getIdleTime();
+  Student* getStudent();
 private:
-  Student student;
-  int totalWindows;
+  Student* newStudent;
+  // int totalWindows;
   int idleTime;
-  bool isWindowfull;
+  bool isWindowEmpty;
 }
 
 #endif
