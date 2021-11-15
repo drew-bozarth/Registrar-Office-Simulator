@@ -6,13 +6,12 @@ Assignment 5
 
 Source Files:
 LinkedList.h
+ListInterface.h
 GenQueue.h
 Student.h
 Student.cpp
 Window.h
 Window.cpp
-Simulator.h
-Simulator.cpp
 FileProcessor.h
 FileProcessor.cpp
 main.cpp

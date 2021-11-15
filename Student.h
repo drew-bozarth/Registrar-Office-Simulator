@@ -21,5 +21,5 @@ private:
   int windowTime;
   int waitTime;
 
-}
+};
 #endif

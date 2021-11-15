@@ -10,16 +10,16 @@ Window::Window(Student s1){
 Window::~Window(){}
 
 bool Window::isAvailable(){
-return (!isWindowfull);
+return (isWindowEmpty);
 }
 
-void Window::fillWindow(Student s1){
+void Window::setWindowBusy(){
 idleTime = 0;
-isWindowfull = true;
+isWindowEmpty = false;
 }
 
 void Window::emptyWindow(){
-  isWindowfull = false;
+  isWindowEmpty = true;
   setIdleTime();
 }
 

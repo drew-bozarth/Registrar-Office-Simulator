@@ -18,7 +18,8 @@ Parameters: none (default constructor)
 Exceptions: none
 */
 FileProcessor::FileProcessor(){
-
+queue = new GenQueue<Student>();
+totalWindows = 0;
 }
 
 /*
@@ -42,9 +43,28 @@ void FileProcessor::processFile(string inputFilePath){
   ifstream input (inputFilePath);
 
   if (input.is_open()){
+    int capacity;
+    string str;
+    getline(input,str);
+    capacity = stoi(str);
+    totalWindows = capacity;
+    Window **wind = new Window*[capacity];
+    // for (int i =0; i < capacity; ++i){
+    //   wind[i] = new Window(new Student(i+1));
+    // }
+    int numStudents;
+    int clockTick;
     while ( getline(input,fileLine) ){
         cout << fileLine << endl;
         cout << endl;
+        clockTick = stoi(fileLine);
+        getline(input,str);
+        numStudents = stoi(str);
+        for (int i = 0; i < numStudents; ++i){
+          getline(input,str);
+          int windTime = stoi(str);
+          queue->insert(new Student(clockTick, windTime));
+        }
     }
     input.close();
   }

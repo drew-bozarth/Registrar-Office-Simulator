@@ -15,6 +15,9 @@ This is the .h file for FileProcessor
 #include <iostream>
 #include <fstream>
 #include <exception>
+#include "GenQueue.h"
+#include "Window.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -24,6 +27,8 @@ class FileProcessor{
     FileProcessor();
     ~FileProcessor();
     void processFile(string inputFilePath);
+    GenQueue<Student> **queue;
+    int totalWindows;
 };
 //end of the header guards
 #endif

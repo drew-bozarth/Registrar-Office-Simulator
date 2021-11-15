@@ -21,99 +21,113 @@ Template Class: ListInterface
 template <class T>
 class ListInterface{
   public:
-    ListInterface(); //default constructor
-    virtual ~ListInterface(); //destructor
+    // ListInterface(); //default constructor
+    // virtual ~ListInterface(); //destructor
 
-    virtual void append(DoublyLinkedList<T> list, T item) const = 0;
-    virtual void prepend(DoublyLinkedList<T> list, T item) const = 0;
-    virtual void insertAfter(DoublyLinkedList<T> list, T currentItem, T insertItem) const = 0;
-    virtual T remove(DoublyLinkedList<T> list, T item) const = 0;
-    virtual T search(DoublyLinkedList<T> list, T item) const = 0;
-    virtual void print(DoublyLinkedList<T> list) const = 0;
-    virtual void printReverse(DoublyLinkedList<T> list) const = 0;
-    virtual void sort(DoublyLinkedList<T> list) const = 0;
-    virtual bool isEmpty(DoublyLinkedList<T> list) const = 0;
-    virtual unsigned int getLength(DoublyLinkedList<T> list) const = 0;
+    virtual void append(T item);
+    virtual void prepend(T item);
+    virtual void insertAfter(T currentItem, T insertItem);
+    virtual T remove(T item);
+    virtual T search(T item);
+    virtual void print();
+    virtual void printReverse();
+    virtual void sort();
+    virtual bool isEmpty();
+    virtual unsigned int getLength();
 };
 
 template <class T>
 class MyList : public ListInterface<T>
 {
   public:
-    ListInterface();
-    ~ListInterface();
-
-    void append(T item) const;
-    void prepend(T item) const;
-    void insertAfter(T currentItem, T insertItem) const;
-    T remove(T item) const;
-    T search(T item) const;
-    void print() const;
-    void printReverse() const;
-    void sort() const;
-    bool isEmpty() const;
-    unsigned int getLength() const;
+    // ListInterface();
+    // ~ListInterface();
+    MyList();
+    ~MyList();
+    void append(T item);
+    void prepend(T item);
+    void insertAfter(T currentItem, T insertItem);
+    T remove(T item);
+    T removeFront();
+    T search(T item);
+    T viewFront();
+    void print();
+    void printReverse();
+    void sort();
+    bool isEmpty();
+    unsigned int getLength();
   private:
     DoublyLinkedList<T> *myLinkedList;
 };
 
+// template <class T>
+// ListInterface<T>::ListInterface(){
+// }
+
 template <class T>
-MyList<T>::ListInterface(){
+MyList<T>::~MyList(){
+delete myLinkedList;
+}
+
+template <class T>
+MyList<T>::MyList(){
   myLinkedList = new DoublyLinkedList<T>();
 }
 
 template <class T>
-MyList<T>::~ListInterface(){
+void MyList<T>::append(T item) {
+  myLinkedList->insertBack(item);
 }
 
 template <class T>
-void MyList<T>::append(T item) const{
-
+void MyList<T>::prepend(T item) {
+  myLinkedList->insertFront(item);
 }
 
 template <class T>
-void MyList<T>::prepend(T item) const{
-
+void MyList<T>::insertAfter(T currentItem, T insertItem) {
+  // need this
 }
 
 template <class T>
-void MyList<T>::insertAfter(T currentItem, T insertItem) const{
-
+T MyList<T>::remove(T item) {
+  return myLinkedList->removeNode(item);
 }
 
 template <class T>
-T MyList<T>::remove(T item) const{
-
+T MyList<T>::search(T item) {
+  return myLinkedList->find(item);
 }
 
 template <class T>
-T MyList<T>::search(T item) const{
-
+T MyList<T>::viewFront() {
+  return myLinkedList->front->data;
 }
 
 template <class T>
-void MyList<T>::print() const{
-
+void MyList<T>::print() {
+  bool printLink = false;
+  myLinkedList->printList(printLink);
 }
 
 template <class T>
-void MyList<T>::printReverse() const{
-
+void MyList<T>::printReverse() {
+  // not necessary for this assignment
 }
 
 template <class T>
-void MyList<T>::sort() const{
-
+void MyList<T>::sort() {
+  // need this
 }
 
 template <class T>
-bool MyList<T>::isEmpty() const{
-
+bool MyList<T>::isEmpty() {
+  return (myLinkedList->isEmpty());
 }
 
 template <class T>
-unsigned int MyList<T>::getLength() const{
-
+unsigned int MyList<T>::getLength() {
+  return myLinkedList->getSize();
 }
 
 

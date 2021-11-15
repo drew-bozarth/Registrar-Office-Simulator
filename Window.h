@@ -18,10 +18,10 @@ public:
   int getIdleTime();
   Student* getStudent();
 private:
-  Student* newStudent;
+  Student newStudent;
   // int totalWindows;
   int idleTime;
   bool isWindowEmpty;
-}
+};
 
 #endif
