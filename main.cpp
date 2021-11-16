@@ -59,15 +59,15 @@ int main(int argc, char** argv){
     string userFilePath = argv[1];
     fp->processFile(userFilePath);
     cout << fp->totalWindows << endl;
-    fp->ticks->printQueue();
-    fp->queue->printQueue();
+    // fp->ticks->printQueue();
+    // fp->queue->printQueue();
   }
   else {
     throw runtime_error("Invalid command line arguments!");
     return -1;
   }
   delete fp;
-// 
+//
 // delete gq;
   return 0;
 }

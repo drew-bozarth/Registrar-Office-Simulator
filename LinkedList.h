@@ -86,7 +86,7 @@ class DoublyLinkedList{
     T removeFront();
     T removeBack();
     T removeNode(T value);
-    T find(T value);
+    int find(T value);
     bool isEmpty();
     unsigned int getSize();
     void printList(bool isPrintLink);
@@ -201,7 +201,7 @@ T DoublyLinkedList<T>::removeNode(T value){
   while(curr->data != value){
     curr = curr->next;
     if(curr == NULL){
-      return -1;
+        throw runtime_error("node not found");
     }
 
   }
@@ -233,7 +233,7 @@ T DoublyLinkedList<T>::removeNode(T value){
 }
 
 template <class T>
-T DoublyLinkedList<T>::find(T value){
+int DoublyLinkedList<T>::find(T value){
   int pos = -1;
   ListNode<T> *curr = front;
 

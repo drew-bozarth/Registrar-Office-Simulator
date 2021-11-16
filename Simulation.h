@@ -15,6 +15,8 @@ public:
   Simulation();
   ~Simulation();
   void simulate(string file);
+  string calcStudent(MyList<int> *students);
+  string calcWindows(MyList<int> *windows);
 private:
   MyList<int> *idleTimes;
   MyList<int> *waitTimes;

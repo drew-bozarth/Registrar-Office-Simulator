@@ -13,7 +13,7 @@ public:
   Student(int a, int w);
   ~Student();
   string printStudent();
-  void updateWaitTime();
+  void updateWaitTime(int wait);
   int getArrival();
   int getWindowTime();
   void setWindowTime();
