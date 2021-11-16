@@ -47,6 +47,7 @@ class MyList : public ListInterface<T>
     void prepend(T item) const;
     void insertAfter(T currentItem, T insertItem) const;
     T remove(T item) const;
+    T removeFront() const;
     T search(T item) const;
     void print() const;
     void printReverse() const;

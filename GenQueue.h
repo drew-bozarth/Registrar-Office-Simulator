@@ -59,15 +59,15 @@ GenQueue<T>::~GenQueue(){
 
 template <class T>
 void GenQueue<T>::insert(T data){
-  myQueue->inserFront(data);
+  myList->prepend(data);
 }
 
 T GenQueue::remove(){
-  if(myQueue->isEmpty()){
+  if(myList->isEmpty()){
     throw runtime_error("queue is empty");
   }
 
-  return myQueue->removeFront();
+  return myList->removeFront();
 }
 
 template <class T>
