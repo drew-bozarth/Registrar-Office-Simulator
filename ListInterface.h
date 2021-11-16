@@ -24,16 +24,16 @@ class ListInterface{
     // ListInterface(); //default constructor
     // virtual ~ListInterface(); //destructor
 
-    virtual void append(T item);
-    virtual void prepend(T item);
-    virtual void insertAfter(T currentItem, T insertItem);
-    virtual T remove(T item);
-    virtual T search(T item);
-    virtual void print();
-    virtual void printReverse();
-    virtual void sort();
-    virtual bool isEmpty();
-    virtual unsigned int getLength();
+    virtual void append(T item){};
+    virtual void prepend(T item){};
+    virtual void insertAfter(T currentItem, T insertItem){};
+    virtual T remove(T item){};
+    virtual T search(T item){};
+    virtual void print(){};
+    virtual void printReverse(){};
+    virtual void sort(){};
+    virtual bool isEmpty(){};
+    virtual unsigned int getLength(){};
 };
 
 template <class T>
@@ -76,6 +76,7 @@ MyList<T>::MyList(){
 
 template <class T>
 void MyList<T>::append(T item) {
+  // cout << "in append" << endl;
   myLinkedList->insertBack(item);
 }
 
@@ -128,6 +129,11 @@ bool MyList<T>::isEmpty() {
 template <class T>
 unsigned int MyList<T>::getLength() {
   return myLinkedList->getSize();
+}
+
+template <class T>
+T MyList<T>::removeFront(){
+  return myLinkedList->removeFront();
 }
 
 

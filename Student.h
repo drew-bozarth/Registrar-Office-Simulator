@@ -12,6 +12,7 @@ public:
   Student();
   Student(int a, int w);
   ~Student();
+  string printStudent();
   void updateWaitTime();
   int getArrival();
   int getWindowTime();

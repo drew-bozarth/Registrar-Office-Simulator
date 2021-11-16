@@ -122,9 +122,10 @@ void DoublyLinkedList<T>::insertFront(T d){
 
 template <class T>
 void DoublyLinkedList<T>::insertBack(T d){
-
+  // cout << "in insertback" << endl;
   ListNode<T> *node = new ListNode<T>(d);
   if(isEmpty()){
+    // cout << "first node" << endl;
     front = node;
   }
   else{
@@ -256,6 +257,7 @@ unsigned int DoublyLinkedList<T>::getSize(){
 
 template <class T>
 bool DoublyLinkedList<T>::isEmpty(){
+  // cout << "in is empty" << endl;
   return (size == 0);
 }
 

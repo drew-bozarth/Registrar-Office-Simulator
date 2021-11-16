@@ -47,7 +47,8 @@ class GenQueue{
 
 template <class T>
 GenQueue<T>::GenQueue(){
-  MyList<T> *myList = new MyList<T>();
+  // cout << "in queue constructor" << endl;
+  myList = new MyList<T>();
   mSize = 0;
   numElements = 0;
 }
@@ -60,6 +61,7 @@ GenQueue<T>::~GenQueue(){
 template <class T>
 void GenQueue<T>::insert(T data){
   myList->append(data);
+  // cout << data << ", inserted." << endl;
 }
 
 template <class T>

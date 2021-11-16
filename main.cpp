@@ -20,13 +20,14 @@ Parameters: int (argc, number of command line arguments), char** (argv, array of
 Exceptions: none
 */
 int main(int argc, char** argv){
-  GenQueue<int> *gq = new GenQueue<int>();
-  gq->insert(1);
-  gq->insert(6);
-  gq->insert(7);
-  gq->insert(3);
-  gq->insert(9);
-  gq->printQueue();
+  // GenQueue<int> *gq = new GenQueue<int>();
+  // gq->insert(1);
+  // gq->insert(6);
+  // gq->insert(7);
+  // gq->insert(3);
+  // gq->insert(9);
+  // gq->remove();
+  // gq->printQueue();
   //example code from class
   /*
   int capacity = 5;
@@ -53,17 +54,20 @@ int main(int argc, char** argv){
 
 
 
-  // FileProcessor *fp = new FileProcessor();
-  // if(argc > 1){
-  //   string userFilePath = argv[1];
-  //   fp->processFile(userFilePath);
-  // }
-  // else {
-  //   throw runtime_error("Invalid command line arguments!");
-  //   return -1;
-  // }
-  // delete fp;
-
-delete gq;
+  FileProcessor *fp = new FileProcessor();
+  if(argc > 1){
+    string userFilePath = argv[1];
+    fp->processFile(userFilePath);
+    cout << fp->totalWindows << endl;
+    fp->ticks->printQueue();
+    fp->queue->printQueue();
+  }
+  else {
+    throw runtime_error("Invalid command line arguments!");
+    return -1;
+  }
+  delete fp;
+// 
+// delete gq;
   return 0;
 }

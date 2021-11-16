@@ -27,7 +27,8 @@ class FileProcessor{
     FileProcessor();
     ~FileProcessor();
     void processFile(string inputFilePath);
-    GenQueue<Student> **queue;
+    GenQueue<int> *queue;
+    GenQueue<int> *ticks;
     int totalWindows;
 };
 //end of the header guards

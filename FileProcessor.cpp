@@ -18,7 +18,8 @@ Parameters: none (default constructor)
 Exceptions: none
 */
 FileProcessor::FileProcessor(){
-queue = new GenQueue<Student>();
+queue = new GenQueue<int>();
+ticks = new GenQueue<int>();
 totalWindows = 0;
 }
 
@@ -29,7 +30,8 @@ Parameters: none (destructor)
 Exceptions: none
 */
 FileProcessor::~FileProcessor(){
-
+delete queue;
+delete ticks;
 }
 
 /*
@@ -46,24 +48,25 @@ void FileProcessor::processFile(string inputFilePath){
     int capacity;
     string str;
     getline(input,str);
-    capacity = stoi(str);
-    totalWindows = capacity;
-    Window **wind = new Window*[capacity];
-    // for (int i =0; i < capacity; ++i){
-    //   wind[i] = new Window(new Student(i+1));
-    // }
+    cout << str << endl;
+    totalWindows = stoi(str);
+
     int numStudents;
     int clockTick;
     while ( getline(input,fileLine) ){
-        cout << fileLine << endl;
-        cout << endl;
+        // cout << fileLine << endl;
+        // cout << endl;
         clockTick = stoi(fileLine);
+        cout << "clock tick: " << clockTick << endl;
         getline(input,str);
         numStudents = stoi(str);
+        cout << "Number of students: " << numStudents << endl;
         for (int i = 0; i < numStudents; ++i){
           getline(input,str);
+          cout << "wait time: " << str << endl;
           int windTime = stoi(str);
-          queue->insert(new Student(clockTick, windTime));
+          ticks->insert(clockTick);
+          queue->insert(windTime);
         }
     }
     input.close();

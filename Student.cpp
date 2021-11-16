@@ -18,6 +18,15 @@ Student::~Student(){
   // exitTime = 0;
 }
 
+string Student::printStudent(){
+  string s;
+  s += "Arrival Time: ";
+  s += arrival;
+  s += "\nTime waiting: ";
+  s += waitTime;
+  s += "Time needed at window: ";
+  s += windowTime;
+}
 int Student::getArrival(){
   return arrival;
 }
