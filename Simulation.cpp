@@ -10,13 +10,13 @@ Simulation::~Simulation(){
   delete waitTimes;
 };
 
-string Simulation::calcStudent(MyList<int> *students){
+void Simulation::calcStudent(MyList<int> *students){
 int mean;
 int total = 0;
 int numStudents;
 int median;
-int max;
-int over10;
+int max = 0;
+int over10 = 0;
 int current;
 students->sort();
 numStudents = students->getLength();
@@ -24,6 +24,8 @@ for (int i = 0; i < numStudents; ++i){
   current = students->removeFront();
   if (current >= 10){
     ++over10;
+  } if (current > max){
+    max = current;
   }
   total += current;
   students->append(current);
@@ -34,16 +36,35 @@ for (int i = 0; i < numStudents/2; ++i){
 }
 median = current;
 mean = total/numStudents;
+cout << "Mean wait time: " << mean << "minutes" << endl;
+cout << "Median wait time: " << median << "minutes" << endl;
+cout << "Longest Wait time: " << max << "minutes" << endl;
+cout << "Number of wait Times exceeding 10 minutes: " << over10 << endl;
 };
 
 string Simulation::calcWindows(MyList<int> *windows){
 int mean;
-int max;
+int max = 0;
+int total = 0;
 int over5;
+int numIdles = windows->getLength();
+int current;
+for (int i = 0; i < numIdles; ++i){
+ current = windows->removeFront();
+ total += current;
+ if (curr >= 5)
+   ++over5;
+ if (curr > max)
+    max = curr;
+mean = total/numIdles;
+cout << "Mean Idle time: " << mean << "minutes" << endl;
+cout << "Longest Idle time: " << max << "minutes" << endl;
+cout << "Number of Idle Times exceeding 5 minutes: " << over5 << endl;
 };
 
 void Simulation::simulate(string File){
   FileProcessor *fp = new FileProcessor();
+  Student *currStu;
   int capacity;
   int minute = 0;
   int number = 0;
@@ -56,14 +77,18 @@ void Simulation::simulate(string File){
     wind[i] = new Window();
   }
   while(!fp->queue->isEmpty()){
-  currTick = queue->peek->getArrival();
+  currStu = queue->peek();
+  currTick = currStu->getArrival();
   if (currTick == minute){
-  ++number;
-  wind[number](queue->remove());
+    ++number;
+    if (number >= capacity){
+      continue;
+    }
+    wind[number].setWindowBusy(queue->remove());
   } else {
     for (int i = 0; i < capacity; ++i){
-      if (wind[i]->isEmpty()){
-      wind[i]->updateIdleTime();}
+      if (wind[i].isEmpty()){
+      wind[i].updateIdleTime();}
     }
       ++minute;
   }

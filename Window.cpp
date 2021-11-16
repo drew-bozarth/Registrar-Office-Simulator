@@ -3,9 +3,8 @@
 //when implementing window, create a double pointer array and initialize
 Window::Window(){}
 
-Window::Window(Student s1){
-  newStudent = s1;
-}
+// Window::Window(Student s1){
+// }
 
 Window::~Window(){}
 
@@ -13,9 +12,10 @@ bool Window::isAvailable(){
 return (isWindowEmpty);
 }
 
-void Window::setWindowBusy(){
+void Window::setWindowBusy(Student s1){
 idleTime = 0;
 isWindowEmpty = false;
+newStudent = s1;
 }
 
 void Window::emptyWindow(){

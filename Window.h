@@ -9,10 +9,10 @@
 class Window{
 public:
   Window();
-  Window(Student s1);
+  // Window(Student s1);
   ~Window();
   bool isAvailable();
-  void setWindowBusy();
+  void setWindowBusy(Student s1);
   void emptyWindow();
   void setIdleTime();
   int getIdleTime();
