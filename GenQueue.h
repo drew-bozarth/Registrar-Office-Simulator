@@ -15,7 +15,7 @@ This is a template class for a Queue
 #include <iostream>
 #include <exception>
 //includes the DoublyLinkedList template Class
-#include "LinkedList.h"
+#include "ListInterface.h"
 //standard namespace libaray in C++
 using namespace std;
 
@@ -40,14 +40,14 @@ class GenQueue{
     void printQueue();
 
   private:
-    DoublyLinkedList<T> *myQueue;
+    MyList<T> *myList;
     unsigned int mSize;
     unsigned int numElements;
 };
 
 template <class T>
 GenQueue<T>::GenQueue(){
-  DoublyLinkedList<T> *myQueue = new DoublyLinkedList();
+  MyList<T> *myList = new MyList<T>();
   mSize = 0;
   numElements = 0;
 }
