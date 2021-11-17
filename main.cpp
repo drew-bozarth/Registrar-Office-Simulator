@@ -10,6 +10,7 @@ Main file for Assignment5
 
 //these statements include the user defined files into this file to be used
 #include "GenQueue.h"
+#include "FileProcessor.h"
 // standard namespace library in C++
 using namespace std;
 /*
@@ -19,6 +20,9 @@ Parameters: int (argc, number of command line arguments), char** (argv, array of
 Exceptions: none
 */
 int main(int argc, char** argv){
+
+  //example code from class
+  /*
   int capacity = 5;
   MyWindow **wind = new Window*[capacity];
 
@@ -39,10 +43,7 @@ int main(int argc, char** argv){
   cout << "Student " << wind[0]->getStudent()->getTimeNeeded() << endl;
 
   delete [] wind;
-  
-
-
-
+  */
 
 
 

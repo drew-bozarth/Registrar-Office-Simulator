@@ -100,8 +100,8 @@ T MyList<T>::viewFront() const{
 
 template <class T>
 void MyList<T>::print() const{
-  bool printLink = false
-  myLinkedList->printList(printLink));
+  bool printLink = false;
+  myLinkedList->printList(printLink);
 }
 
 template <class T>

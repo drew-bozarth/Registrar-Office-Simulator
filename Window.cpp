@@ -1,8 +1,12 @@
 #include "Window.h"
 
-Window::Window(){}
+Window::Window(){
 
-Window::~Window(){}
+}
+
+Window::~Window(){
+  
+}
 
 bool Window::isAvailable(){
 return (!isWindowfull);

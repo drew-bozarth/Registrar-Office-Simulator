@@ -62,7 +62,8 @@ void GenQueue<T>::insert(T data){
   myList->prepend(data);
 }
 
-T GenQueue::remove(){
+template <class T>
+T GenQueue<T>::remove(){
   if(myList->isEmpty()){
     throw runtime_error("queue is empty");
   }

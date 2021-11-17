@@ -81,7 +81,7 @@ class DoublyLinkedList{
     DoublyLinkedList();
     virtual ~DoublyLinkedList();
 
-    void inserFront(T d);
+    void insertFront(T d);
     void insertBack(T d);
     T removeFront();
     T removeBack();
@@ -170,7 +170,7 @@ T DoublyLinkedList<T>::removeBack(){
 
   ListNode<T> *temp = back;
 
-  if (back->prev = NULL;){
+  if (back->prev = NULL){
     //only one node in the list
     front = NULL;
   }
@@ -189,7 +189,7 @@ T DoublyLinkedList<T>::removeBack(){
 }
 
 template <class T>
-T DoublyLinkedList<T>::removeNode(int value){
+T DoublyLinkedList<T>::removeNode(T value){
 
   if (isEmpty()){
     throw runtime_error("list is empty");
@@ -232,7 +232,7 @@ T DoublyLinkedList<T>::removeNode(int value){
 }
 
 template <class T>
-int SingleLinkedList<T>::find(T value){
+T DoublyLinkedList<T>::find(T value){
   int pos = -1;
   ListNode<T> *curr = front;
 
@@ -265,18 +265,18 @@ void DoublyLinkedList<T>::printList(bool printLink)
     ListNode<T> *curr = front;
     while(curr != 0){
        if(curr == front){
-         cout << “{FRONT}: “;
+         cout << "{FRONT}: ";
        }
        else if(curr == back){
-         cout << “{REAR}: “;
+         cout << "{REAR}: ";
        }
        if(printLink)
-        cout << “[ PREV: “<< curr->prev << ” || ” << curr->data << ” || NEXT: “<< curr->next << ” ] “;
+        cout << "[ PREV: " << curr->prev << " || " << curr->data << " || NEXT: " << curr->next << " ] ";
       else
-        cout << “[ ” << curr->data << ” ] “;
+        cout << "[ " << curr->data << " ] ";
        curr = curr->next;
        if(curr != 0){
-         cout << ” ==> “;
+         cout << " ==> ";
        }
     }
     cout << endl;
