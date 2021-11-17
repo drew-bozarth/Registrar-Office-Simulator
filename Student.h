@@ -13,10 +13,10 @@ public:
   ~Student();
   int getArrival();
   int getWindowTime();
+private:
   int arrival;
   int windowTime;
   int exitTime;
   int waitTime;
-
 }
 #endif

@@ -49,6 +49,7 @@ class MyList : public ListInterface<T>
     T remove(T item) const;
     T removeFront() const;
     T search(T item) const;
+    T viewFront() const;
     void print() const;
     void printReverse() const;
     void sort() const;
@@ -69,52 +70,58 @@ MyList<T>::~ListInterface(){
 
 template <class T>
 void MyList<T>::append(T item) const{
-
+  myLinkedList->insertBack(item);
 }
 
 template <class T>
 void MyList<T>::prepend(T item) const{
-
+  myLinkedList->insertFront(item);
 }
 
 template <class T>
 void MyList<T>::insertAfter(T currentItem, T insertItem) const{
-
+  // need this
 }
 
 template <class T>
 T MyList<T>::remove(T item) const{
-
+  return myLinkedList->removeNode(item);
 }
 
 template <class T>
 T MyList<T>::search(T item) const{
+  return myLinkedList->find(item);
+}
 
+template <class T>
+T MyList<T>::viewFront() const{
+  return myLinkedList->front->data;
 }
 
 template <class T>
 void MyList<T>::print() const{
-
+  bool printLink = false
+  myLinkedList->printList(printLink));
 }
 
 template <class T>
 void MyList<T>::printReverse() const{
-
+  // not necessary for this assignment
 }
 
 template <class T>
 void MyList<T>::sort() const{
-
+  // need this
 }
 
 template <class T>
 bool MyList<T>::isEmpty() const{
-
+  return (myLinkedList->isEmpty());
 }
 
 template <class T>
 unsigned int MyList<T>::getLength() const{
-
+  return myLinkedList->getSize();
 }
 
 

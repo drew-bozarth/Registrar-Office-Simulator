@@ -72,30 +72,30 @@ T GenQueue::remove(){
 
 template <class T>
 void GenQueue<T>::insertPriQueue(T data){
+  //not necessary for this assignment
 }
 
 template <class T>
 T GenQueue<T>::peek(){
-  if (myQueue->isEmpty()){
+  if (myList->isEmpty()){
     throw runtime_error("queue is empty");
   }
-  return myQueue->front->data;
+  return myList->viewFront();;
 }
 
 template <class T>
 bool GenQueue<T>::isEmpty(){
-  return (myQueue->isEmpty());
+  return (myList->isEmpty());
 }
 
 template <class T>
 unsigned int GenQueue<T>::getSize(){
-  return (myQueue->getSize());
+  return (myList->getSize());
 }
 
 template <class T>
 void GenQueue<T>::printQueue(){
-  bool printLink = false
-  myQueue->printList(printLink);
+  myList->print();
 }
 
 

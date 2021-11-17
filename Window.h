@@ -11,12 +11,12 @@ public:
   Window();
   ~Window();
   bool isAvailable();
-  void fillWindow(Student s1);
+  void fillWindow(Student *s1);
   void emptyWindow();
   void setIdleTime();
   int getIdleTime();
 private:
-  Student student;
+  Student *student;
   int totalWindows;
   int idleTime;
   bool isWindowfull;
