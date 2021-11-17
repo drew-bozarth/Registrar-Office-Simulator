@@ -80,11 +80,11 @@ class DoublyLinkedList{
   public:
     DoublyLinkedList();
     virtual ~DoublyLinkedList();
-
     void insertFront(T d);
     void insertBack(T d);
     T removeFront();
     T removeBack();
+    T getFront();
     T removeNode(T value);
     int find(T value);
     bool isEmpty();
@@ -118,6 +118,11 @@ void DoublyLinkedList<T>::insertFront(T d){
   }
   front = node;
   ++size;
+}
+
+template<class T>
+T DoublyLinkedList<T>::getFront(){
+  return front->data;
 }
 
 template <class T>

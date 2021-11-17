@@ -68,7 +68,7 @@ void GenQueue<T>::insert(T data){
 template <class T>
 T GenQueue<T>::remove(){
   if(myList->isEmpty()){
-    throw runtime_error("queue is empty");
+    throw runtime_error("queue is empty remove");
   }
 
   return myList->removeFront();
@@ -82,7 +82,7 @@ void GenQueue<T>::insertPriQueue(T data){
 template <class T>
 T GenQueue<T>::peek(){
   if (myList->isEmpty()){
-    throw runtime_error("queue is empty");
+    throw runtime_error("queue is empty peek");
   }
   return myList->viewFront();
 }

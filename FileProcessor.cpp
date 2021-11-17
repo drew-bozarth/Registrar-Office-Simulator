@@ -57,13 +57,13 @@ void FileProcessor::processFile(string inputFilePath){
         // cout << fileLine << endl;
         // cout << endl;
         clockTick = stoi(fileLine);
-        cout << "clock tick: " << clockTick << endl;
+        // cout << "clock tick: " << clockTick << endl;
         getline(input,str);
         numStudents = stoi(str);
-        cout << "Number of students: " << numStudents << endl;
+        // cout << "Number of students: " << numStudents << endl;
         for (int i = 0; i < numStudents; ++i){
           getline(input,str);
-          cout << "wait time: " << str << endl;
+          // cout << "wait time: " << str << endl;
           int windTime = stoi(str);
           Student *s1 = new Student(clockTick, windTime);
           // ticks->insert(clockTick);

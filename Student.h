@@ -17,10 +17,11 @@ public:
   int getArrival();
   int getWindowTime();
   void setWindowTime();
-private:
   int arrival;
   int windowTime;
   int waitTime;
+private:
+
 
 };
 #endif

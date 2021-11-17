@@ -26,14 +26,14 @@ class ListInterface{
 
     virtual void append(T item){};
     virtual void prepend(T item){};
-    virtual void insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem){};
+    // virtual void insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem){};
     virtual T remove(T item){};
     virtual T removeFront(){};
     virtual int search(T item){};
     virtual void print(){};
     virtual void printReverse(){};
-    virtual void sort(){};
-    virtual void sortInsert(ListNode<T>* curr);
+    // virtual void sort(){};
+    // virtual void sortInsert(ListNode<T>* curr);
     virtual bool isEmpty(){};
     virtual unsigned int getLength(){};
 };
@@ -48,15 +48,15 @@ class MyList : public ListInterface<T>
     ~MyList();
     void append(T item);
     void prepend(T item);
-    void insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem);
+    // void insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem);
     T remove(T item);
     T removeFront();
     int search(T item);
     T viewFront();
     void print();
     void printReverse();
-    void sort();
-    void sortInsert(ListNode<T>* curr);
+    // void sort();
+    // void sortInsert(ListNode<T>* curr);
     bool isEmpty();
     unsigned int getLength();
   private:
@@ -86,20 +86,20 @@ void MyList<T>::prepend(T item) {
   myLinkedList->insertFront(item);
 }
 
-template <class T>
-void MyList<T>::insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem) {
-  ListNode<T>* current = sortedList->front;
-  ListNode<T>* next = NULL;
-  while (current != currentItem){
-    next = current->next;
-    current = next;
-  }
-
-  insertItem->next = current->next;
-  insertItem->prev = current;
-  current->next->prev = insertItem;
-  current->next = insertItem;
-}
+// template <class T>
+// void MyList<T>::insertAfterSorted(ListNode<T>* currentItem, ListNode<T>* insertItem) {
+//   ListNode<T>* current = sortedList->front;
+//   ListNode<T>* next = NULL;
+//   while (current != currentItem){
+//     next = current->next;
+//     current = next;
+//   }
+//
+//   insertItem->next = current->next;
+//   insertItem->prev = current;
+//   current->next->prev = insertItem;
+//   current->next = insertItem;
+// }
 
 template <class T>
 T MyList<T>::remove(T item) {
@@ -113,7 +113,7 @@ int MyList<T>::search(T item) {
 
 template <class T>
 T MyList<T>::viewFront() {
-  return myLinkedList->front->data;
+  return myLinkedList->getFront();
 }
 
 template <class T>
@@ -127,40 +127,40 @@ void MyList<T>::printReverse() {
   // not necessary for this assignment
 }
 
-template <class T>
-void MyList<T>::sort() {
-  sortedList = new DoublyLinkedList<T>();
-  ListNode<T> *current = myLinkedList->front;
-  ListNode<T> *next = NULL;
+// template <class T>
+// void MyList<T>::sort() {
+//   sortedList = new DoublyLinkedList<T>();
+//   ListNode<T> *current = myLinkedList->front;
+//   ListNode<T> *next = NULL;
+//
+//   while (current != NULL){
+//     next = current->next;
+//
+//     sortInsert(current);
+//     current = next;
+//   }
+// }
 
-  while (current != NULL){
-    next = current->next;
-
-    sortInsert(current);
-    current = next;
-  }
-}
-
-template <class T>
-void MyList<T>::sortInsertSorted(ListNode<T> *curr){
-  ListNode<T>* sortedCurrent = sortedList->front;
-  ListNode<T>* sortedNext = NULL;
-
-  if (sortedList->front == NULL){
-    sortedList->append(curr);
-    return;
-  }
-  else if (curr->data < sortedCurrent->data){
-    sortedList->prepend(curr);
-    return;
-  }
-
-  while (sortedCurrent->next != NULL && curr->data < sortedCurrent->data){
-    sortedNext = sortedCurrent->next;
-    sortedCurrent = sortedNext;
-  }
-  sortedList->insertAfter(curr, sortedCurrent);
-}
+// template <class T>
+// void MyList<T>::sortInsertSorted(ListNode<T> *curr){
+//   ListNode<T>* sortedCurrent = sortedList->front;
+//   ListNode<T>* sortedNext = NULL;
+//
+//   if (sortedList->front == NULL){
+//     sortedList->append(curr);
+//     return;
+//   }
+//   else if (curr->data < sortedCurrent->data){
+//     sortedList->prepend(curr);
+//     return;
+//   }
+//
+//   while (sortedCurrent->next != NULL && curr->data < sortedCurrent->data){
+//     sortedNext = sortedCurrent->next;
+//     sortedCurrent = sortedNext;
+//   }
+//   sortedList->insertAfter(curr, sortedCurrent);
+// }
 
 template <class T>
 bool MyList<T>::isEmpty() {

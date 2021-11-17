@@ -1,7 +1,8 @@
 #include "Window.h"
 
 //when implementing window, create a double pointer array and initialize
-Window::Window(){}
+Window::Window(){
+}
 
 // Window::Window(Student s1){
 // }
@@ -16,7 +17,8 @@ void Window::setWindowBusy(Student *s1){
 idleTime = 0;
 isWindowEmpty = false;
 // newStudent = s1;
-// occupiedTime = s1->windowTime;
+occupiedTime = s1->windowTime;
+entryTime = s1->arrival;
 }
 
 void Window::emptyWindow(){
@@ -25,14 +27,18 @@ void Window::emptyWindow(){
   setIdleTime();
 }
 
+int Window::getOccupiedTime(){
+  return occupiedTime;
+}
+
+int Window::getEntryTime(){
+  return entryTime;
+}
+
 void Window::setIdleTime(){
   ++idleTime;
 }
 
 int Window::getIdleTime(){
   return idleTime;
-}
-
-int Window::getOccupiedTime(){
-  return occupiedTime;
 }

@@ -17,13 +17,16 @@ public:
   void setIdleTime();
   int getIdleTime();
   int getOccupiedTime();
-  Student* getStudent();
-private:
+  int getEntryTime();
+  // Student* getStudent();
   int occupiedTime;
-  Student newStudent;
+  int entryTime;
+  // Student newStudent;
   // int totalWindows;
   int idleTime;
   bool isWindowEmpty;
+private:
+
 };
 
 #endif

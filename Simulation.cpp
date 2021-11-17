@@ -18,7 +18,7 @@ int median;
 int max = 0;
 int over10 = 0;
 int current;
-students->sort();
+// students->sort();
 numStudents = students->getLength();
 for (int i = 0; i < numStudents; ++i){
   current = students->removeFront();
@@ -72,32 +72,56 @@ void Simulation::simulate(string File){
   int wait;
   int currTick = 0;
   fp->processFile(File);
+  cout << "Past file processor" << endl;
   capacity = fp->totalWindows;
   Window **wind = new Window*[capacity];
+  cout << "Array made" << endl;
   for (int i =0; i < capacity; ++i){
     wind[i] = new Window();
   }
+  cout << "Array filled" << endl;
   while(!fp->queue->isEmpty()){
-  currStu = fp->queue->peek();
-  number = currStu->getArrival();
+  // cout << "in while loop" << endl;
+  // currStu = fp->queue->peek();
+  // number = currStu->getArrival();
+  // cout << "Student retrieved: " << number << endl;
+  cout << "Current tick: " << currTick << endl;
   for (int i = 0; i < capacity; ++i){
-    if (number >= currTick){
+    if (fp->queue->isEmpty()){
+      // if (wind[i]->isAvailable()){
+      //   cout << "Idle increased" << endl;
+      //   wind[i]->setIdleTime();
+      // } else {
+      //   if (currTick == wind[i]->getEntryTime() + wait + wind[i]->getOccupiedTime()){
+      //     wind[i]->emptyWindow();
+      //     cout << "window emptied" << endl;
+      //   }
+      // }
+      continue;
+    }
+    currStu = fp->queue->peek();
+    number = currStu->getArrival();
+    // cout << "in for loop" << endl;
       if (wind[i]->isAvailable()){
+      if (number <= currTick){
       idleTimes->append(wind[i]->getIdleTime());
-      wind[number]->setWindowBusy(fp->queue->remove());
+      wind[i]->setWindowBusy(fp->queue->remove());
       wait = currTick - number;
       waitTimes->append(wait);
-    }
+      cout << "Window filled" << endl;
     } else {
-      if (wind[i]->isAvailable()){
-      wind[i]->setIdleTime();
+      cout << "Idle increased" << endl;
+      wind[i]->setIdleTime(); }
+    } else{
+      cout << "window occupied" << endl;
+      if (currTick == wind[i]->getEntryTime() + wait + wind[i]->getOccupiedTime()){
+        wind[i]->emptyWindow();
+        cout << "window emptied" << endl;
       }
     }
-    if (currTick == wind[i]->getStudent()->getArrival() + wait + wind[i]->getStudent()->getWindowTime()){
-      wind[i]->emptyWindow();
     }
+    ++currTick;
   }
-      ++currTick;
-  }
+
   delete fp;
 };

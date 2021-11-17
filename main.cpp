@@ -11,6 +11,7 @@ Main file for Assignment5
 //these statements include the user defined files into this file to be used
 #include "GenQueue.h"
 #include "FileProcessor.h"
+#include "Simulation.h"
 // standard namespace library in C++
 using namespace std;
 /*
@@ -54,11 +55,11 @@ int main(int argc, char** argv){
 
 
 
-  FileProcessor *fp = new FileProcessor();
+  Simulation *sim = new Simulation();
   if(argc > 1){
     string userFilePath = argv[1];
-    fp->processFile(userFilePath);
-    cout << fp->totalWindows << endl;
+    sim->simulate(userFilePath);
+    // cout << fp->totalWindows << endl;
     // fp->ticks->printQueue();
     // fp->queue->printQueue();
   }
@@ -66,7 +67,7 @@ int main(int argc, char** argv){
     throw runtime_error("Invalid command line arguments!");
     return -1;
   }
-  delete fp;
+  delete sim;
 //
 // delete gq;
   return 0;
