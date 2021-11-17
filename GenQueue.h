@@ -31,11 +31,11 @@ class GenQueue{
     //core functions
     //make it as a pointer?
     void insert(T data); //aka enqueue()
-    T* remove(); //aka dequeue()
+    T remove(); //aka dequeue()
     void insertPriQueue(T data);
 
     //aux functions
-    T* peek(); //aka front()
+    T peek(); //aka front()
     bool isEmpty();
     unsigned int getSize(); //unsigned because it will never be negative
     void printQueue();
@@ -66,7 +66,7 @@ void GenQueue<T>::insert(T data){
 }
 
 template <class T>
-T* GenQueue<T>::remove(){
+T GenQueue<T>::remove(){
   if(myList->isEmpty()){
     throw runtime_error("queue is empty");
   }
@@ -80,11 +80,11 @@ void GenQueue<T>::insertPriQueue(T data){
 }
 
 template <class T>
-T* GenQueue<T>::peek(){
+T GenQueue<T>::peek(){
   if (myList->isEmpty()){
     throw runtime_error("queue is empty");
   }
-  return myList->viewFront();;
+  return myList->viewFront();
 }
 
 template <class T>

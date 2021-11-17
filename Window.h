@@ -12,12 +12,14 @@ public:
   // Window(Student s1);
   ~Window();
   bool isAvailable();
-  void setWindowBusy(Student s1);
+  void setWindowBusy(Student *s1);
   void emptyWindow();
   void setIdleTime();
   int getIdleTime();
+  int getOccupiedTime();
   Student* getStudent();
 private:
+  int occupiedTime;
   Student newStudent;
   // int totalWindows;
   int idleTime;

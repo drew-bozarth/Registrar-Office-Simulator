@@ -42,7 +42,7 @@ cout << "Longest Wait time: " << max << "minutes" << endl;
 cout << "Number of wait Times exceeding 10 minutes: " << over10 << endl;
 };
 
-string Simulation::calcWindows(MyList<int> *windows){
+void Simulation::calcWindows(MyList<int> *windows){
 int mean;
 int max = 0;
 int total = 0;
@@ -52,10 +52,11 @@ int current;
 for (int i = 0; i < numIdles; ++i){
  current = windows->removeFront();
  total += current;
- if (curr >= 5)
+ if (current >= 5)
    ++over5;
- if (curr > max)
-    max = curr;
+ if (current > max)
+    max = current;
+  }
 mean = total/numIdles;
 cout << "Mean Idle time: " << mean << "minutes" << endl;
 cout << "Longest Idle time: " << max << "minutes" << endl;
@@ -77,29 +78,26 @@ void Simulation::simulate(string File){
     wind[i] = new Window();
   }
   while(!fp->queue->isEmpty()){
-  currStu = queue->peek();
-  currTick = currStu->getArrival();
-  if (currTick == minute){
-    ++number;
-    if (number >= capacity){
-      continue;
+  currStu = fp->queue->peek();
+  number = currStu->getArrival();
+  for (int i = 0; i < capacity; ++i){
+    if (number >= currTick){
+      if (wind[i]->isAvailable()){
+      idleTimes->append(wind[i]->getIdleTime());
+      wind[number]->setWindowBusy(fp->queue->remove());
+      wait = currTick - number;
+      waitTimes->append(wait);
     }
-    wind[number].setWindowBusy(queue->remove());
-  } else {
-    for (int i = 0; i < capacity; ++i){
-      if (wind[i].isEmpty()){
-      wind[i].updateIdleTime();}
+    } else {
+      if (wind[i]->isAvailable()){
+      wind[i]->setIdleTime();
+      }
     }
-      ++minute;
+    if (currTick == wind[i]->getStudent()->getArrival() + wait + wind[i]->getStudent()->getWindowTime()){
+      wind[i]->emptyWindow();
+    }
   }
-  //   while (minute == currTick){
-  //     //we will remove from both queues until the next clock tick arrives and add both to a student object
-  //
-  //   }
-    //fill required windows
-    //add idle times to empty windows
-    //before idle time is reset for the window add to idleTimes list
+      ++currTick;
   }
-  //once the time of a student needed at the window is completed add wait time for student to waitTimes list
   delete fp;
-}
+};
