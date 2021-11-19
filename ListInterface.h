@@ -26,12 +26,14 @@ class ListInterface{
 
     virtual void append(T item){};
     virtual void prepend(T item){};
-    virtual void insertAfter(T currentItem, T insertItem){};
+    virtual void insertAfterSorted(ListNode* currentItem, ListNode* insertItem){};
     virtual T remove(T item){};
+    virtual T removeFront(){};
     virtual int search(T item){};
     virtual void print(){};
     virtual void printReverse(){};
     virtual void sort(){};
+    virtual void sortInsert(ListNode* curr);
     virtual bool isEmpty(){};
     virtual unsigned int getLength(){};
 };
@@ -46,7 +48,7 @@ class MyList : public ListInterface<T>
     ~MyList();
     void append(T item);
     void prepend(T item);
-    void insertAfter(T currentItem, T insertItem);
+    void insertAfterSorted(ListNode* currentItem, ListNode* insertItem);
     T remove(T item);
     T removeFront();
     int search(T item);
@@ -85,8 +87,18 @@ void MyList<T>::prepend(T item) {
 }
 
 template <class T>
-void MyList<T>::insertAfter(T currentItem, T insertItem) {
-  // need this
+void MyList<T>::insertAfterSorted(ListNode* currentItem, ListNode* insertItem) {
+  ListNode* current = sortedList->front;
+  ListNode* next = NULL
+  while (current != currentItem){
+    next = current->next;
+    current = next;
+  }
+
+  insertItem->next = current->next;
+  insertItem->prev = current;
+  current->next->prev = insertItem;
+  current->next = insertItem;
 }
 
 template <class T>
@@ -130,7 +142,7 @@ void MyList<T>::sort() {
 }
 
 template <class T>
-void MyList<T>::sortInsert(ListNode *curr){
+void MyList<T>::sortInsertSorted(ListNode *curr){
   ListNode* sortedCurrent = sortedList->front;
   ListNode* sortedNext = NULL;
 
