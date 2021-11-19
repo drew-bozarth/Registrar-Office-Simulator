@@ -54,24 +54,23 @@ class MyList : public ListInterface<T>
     void print();
     void printReverse();
     void sort();
+    void sortInsert(ListNode* curr);
     bool isEmpty();
     unsigned int getLength();
   private:
     DoublyLinkedList<T> *myLinkedList;
+    DoublyLinkedList<T> *sortedList;
 };
-
-// template <class T>
-// ListInterface<T>::ListInterface(){
-// }
-
-template <class T>
-MyList<T>::~MyList(){
-delete myLinkedList;
-}
 
 template <class T>
 MyList<T>::MyList(){
   myLinkedList = new DoublyLinkedList<T>();
+}
+
+template <class T>
+MyList<T>::~MyList(){
+  delete myLinkedList;
+  delete sortedList;
 }
 
 template <class T>
@@ -118,7 +117,37 @@ void MyList<T>::printReverse() {
 
 template <class T>
 void MyList<T>::sort() {
-  // need this
+  sortedList = new DoublyLinkedList<T>();
+  ListNode *current = myLinkedList->front;
+  ListNode *next = NULL;
+
+  while (current != NULL){
+    next = current->next;
+
+    sortInsert(current);
+    current = next;
+  }
+}
+
+template <class T>
+void MyList<T>::sortInsert(ListNode *curr){
+  ListNode* sortedCurrent = sortedList->front;
+  ListNode* sortedNext = NULL;
+
+  if (sortedList->front == NULL){
+    sortedList->append(curr);
+    return;
+  }
+  else if (curr->data < sortedCurrent->data){
+    sortedList->prepend(curr);
+    return;
+  }
+
+  while (sortedCurrent->next != NULL && curr->data < sortedCurrent->data){
+    sortedNext = sortedCurrent->next;
+    sortedCurrent = sortedNext;
+  }
+  sortedList->insertAfter(curr, sortedCurrent);
 }
 
 template <class T>

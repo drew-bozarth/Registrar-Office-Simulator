@@ -233,7 +233,7 @@ T DoublyLinkedList<T>::removeNode(T value){
 }
 
 template <class T>
-T DoublyLinkedList<T>::find(T value){
+int DoublyLinkedList<T>::find(T value){
   int pos = -1;
   ListNode<T> *curr = front;
 
