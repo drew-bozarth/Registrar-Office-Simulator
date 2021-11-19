@@ -28,7 +28,7 @@ class ListInterface{
     virtual void prepend(T item){};
     virtual void insertAfter(T currentItem, T insertItem){};
     virtual T remove(T item){};
-    virtual T search(T item){};
+    virtual int search(T item){};
     virtual void print(){};
     virtual void printReverse(){};
     virtual void sort(){};
@@ -49,7 +49,7 @@ class MyList : public ListInterface<T>
     void insertAfter(T currentItem, T insertItem);
     T remove(T item);
     T removeFront();
-    T search(T item);
+    int search(T item);
     T viewFront();
     void print();
     void printReverse();
@@ -95,7 +95,7 @@ T MyList<T>::remove(T item) {
 }
 
 template <class T>
-T MyList<T>::search(T item) {
+int MyList<T>::search(T item) {
   return myLinkedList->find(item);
 }
 

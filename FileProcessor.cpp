@@ -18,8 +18,8 @@ Parameters: none (default constructor)
 Exceptions: none
 */
 FileProcessor::FileProcessor(){
-queue = new GenQueue<int>();
-ticks = new GenQueue<int>();
+queue = new GenQueue<Student*>();
+// ticks = new GenQueue<int>();
 totalWindows = 0;
 }
 
@@ -31,7 +31,7 @@ Exceptions: none
 */
 FileProcessor::~FileProcessor(){
 delete queue;
-delete ticks;
+// delete ticks;
 }
 
 /*
@@ -65,8 +65,9 @@ void FileProcessor::processFile(string inputFilePath){
           getline(input,str);
           cout << "wait time: " << str << endl;
           int windTime = stoi(str);
-          ticks->insert(clockTick);
-          queue->insert(windTime);
+          Student *s1 = new Student(clockTick, windTime);
+          // ticks->insert(clockTick);
+          queue->insert(s1);
         }
     }
     input.close();

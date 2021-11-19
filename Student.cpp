@@ -35,6 +35,6 @@ int Student::getWindowTime(){
   return windowTime;
 }
 
-void Student::updateWaitTime(){
-  ++waitTime;
+void Student::updateWaitTime(int wait){
+  waitTime = wait;
 }
