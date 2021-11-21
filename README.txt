@@ -4,6 +4,8 @@ dbozarth@chapman.edu | tgooding@chapman.edu
 CPSC 350-02
 Assignment 5
 
+*** We would like to use 1 late day for this assignment (to clarify, we both are only using 1 of our late days) ***
+
 Source Files:
 LinkedList.h
 ListInterface.h
