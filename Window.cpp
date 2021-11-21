@@ -10,15 +10,15 @@ Window::Window(){
 Window::~Window(){}
 
 bool Window::isAvailable(){
-return (isWindowEmpty);
+  return (isWindowEmpty);
 }
 
 void Window::setWindowBusy(Student *s1){
-idleTime = 0;
-isWindowEmpty = false;
-// newStudent = s1;
-occupiedTime = s1->windowTime;
-entryTime = s1->arrival;
+  idleTime = 0;
+  isWindowEmpty = false;
+  // newStudent = s1;
+  occupiedTime = s1->windowTime;
+  entryTime = s1->arrival;
 }
 
 void Window::emptyWindow(){
