@@ -1,6 +1,6 @@
-/* Drew Bozarth
-2373658
-dbozarth@chapman.edu
+/* Drew Bozarth | Thomas Gooding
+2373658 | 2373468
+dbozarth@chapman.edu | tgooding@chapman.edu
 CPSC 350-02
 Assignment 5 - LinkedList.h */
 
@@ -82,7 +82,7 @@ class DoublyLinkedList{
     virtual ~DoublyLinkedList();
     void insertFront(T d);
     void insertBack(T d);
-    void insertAfter(T currentNode, T newNode);
+    void insertAfter(ListNode<T> *currentNode, ListNode<T> *newNode);
     T removeFront();
     T removeBack();
     T getFront();
@@ -94,6 +94,12 @@ class DoublyLinkedList{
     void sort();
 };
 
+/*
+Function: DoublyLinkedList()
+Return: none
+Parameters: none (default constructor)
+Exceptions: none
+*/
 template <class T>
 DoublyLinkedList<T>::DoublyLinkedList(){
   front = NULL;
@@ -101,11 +107,30 @@ DoublyLinkedList<T>::DoublyLinkedList(){
   size = 0;
 }
 
+/*
+Function: ~DoublyLinkedList()
+Return: none
+Parameters: none (destructor)
+Exceptions: none
+*/
 template <class T>
 DoublyLinkedList<T>::~DoublyLinkedList(){
-  //guess what?? build some character and research
+  ListNode<T> *current = front;
+
+  while (current != NULL){
+    ListNode<T> *next = current->next;
+    delete current;
+    current = next;
+  }
 }
 
+/*
+Function: insertFront(T d)
+Return: none
+Parameters: data of type T
+Exceptions: none
+*/
+//inserts node into the front of the linked list
 template <class T>
 void DoublyLinkedList<T>::insertFront(T d){
 
@@ -122,11 +147,25 @@ void DoublyLinkedList<T>::insertFront(T d){
   ++size;
 }
 
+/*
+Function: getFront()
+Return: data of type T
+Parameters: none
+Exceptions: none
+*/
+//returns the front data
 template<class T>
 T DoublyLinkedList<T>::getFront(){
   return front->data;
 }
 
+/*
+Function: insertBack()
+Return: none
+Parameters: data of type T
+Exceptions: none
+*/
+//inserts node into the back of the linked list
 template <class T>
 void DoublyLinkedList<T>::insertBack(T d){
   // cout << "in insertback" << endl;
@@ -144,8 +183,15 @@ void DoublyLinkedList<T>::insertBack(T d){
   ++size;
 }
 
+/*
+Function: insertAfter()
+Return: none
+Parameters: ListNode<T> *currentNode, ListNode<T> *newNode
+Exceptions: none
+*/
+//takes in two nodes, and inserts the seconds parameters after the first parameter in the linked list
 template <class T>
-void DoublyLinkedList<T>::insertAfter(T currentNode, T newNode){
+void DoublyLinkedList<T>::insertAfter(ListNode<T> *currentNode, ListNode<T> *newNode){
   ListNode<T>* current = front;
   ListNode<T>* next = NULL;
   while (current != currentNode){
@@ -159,6 +205,13 @@ void DoublyLinkedList<T>::insertAfter(T currentNode, T newNode){
   current->next = newNode;
 }
 
+/*
+Function: removeFront()
+Return: T
+Parameters: none
+Exceptions: none
+*/
+// removes the front node and returns the data
 template <class T>
 T DoublyLinkedList<T>::removeFront(){
   if (isEmpty()){
@@ -185,6 +238,13 @@ T DoublyLinkedList<T>::removeFront(){
   return data;
 }
 
+/*
+Function: removeBack()
+Return: T
+Parameters: none
+Exceptions: none
+*/
+//removes the back node and returns the data
 template <class T>
 T DoublyLinkedList<T>::removeBack(){
   if (isEmpty()){
@@ -211,6 +271,13 @@ T DoublyLinkedList<T>::removeBack(){
   return data;
 }
 
+/*
+Function: removeNode()
+Return: T
+Parameters: T value
+Exceptions: none
+*/
+//takes in a data value, then removes the node with that value and returns the data
 template <class T>
 T DoublyLinkedList<T>::removeNode(T value){
 
@@ -254,6 +321,13 @@ T DoublyLinkedList<T>::removeNode(T value){
   return data;
 }
 
+/*
+Function: find()
+Return: int
+Parameters: T value
+Exceptions: none
+*/
+//takes in a data value, finds it in the linked list, and returns its position as an int
 template <class T>
 int DoublyLinkedList<T>::find(T value){
   int pos = -1;
@@ -272,17 +346,38 @@ int DoublyLinkedList<T>::find(T value){
   return pos;
 }
 
+/*
+Function: getSize()
+Return: unsigned int
+Parameters: none
+Exceptions: none
+*/
+//returns the size of the linked list (unsigned because size will always be positive)
 template <class T>
 unsigned int DoublyLinkedList<T>::getSize(){
   return size;
 }
 
+/*
+Function: isEmpty()
+Return: bool
+Parameters: none
+Exceptions: none
+*/
+//returns a boolean value checking if the linked list is empty
 template <class T>
 bool DoublyLinkedList<T>::isEmpty(){
   // cout << "in is empty" << endl;
   return (size == 0);
 }
 
+/*
+Function: printLink()
+Return: none
+Parameters: bool printLink
+Exceptions: none
+*/
+//prints out the Linked List, bool parameter will print the links if passed in true
 template <class T>
 void DoublyLinkedList<T>::printList(bool printLink)
 {
@@ -306,7 +401,13 @@ void DoublyLinkedList<T>::printList(bool printLink)
     cout << endl;
 }
 
-
+/*
+Function: sort()
+Return: none
+Parameters: none
+Exceptions: none
+*/
+//sorts the LinkedList from low to high data values using the bubble sort technique
 template <class T>
 void DoublyLinkedList<T>::sort() {
   if (isEmpty())
@@ -335,5 +436,5 @@ void DoublyLinkedList<T>::sort() {
 
 }
 
-
+//end of the header guards
 #endif

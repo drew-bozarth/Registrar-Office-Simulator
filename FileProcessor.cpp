@@ -1,6 +1,6 @@
-/* Drew Bozarth
-2373658
-dbozarth@chapman.edu
+/* Drew Bozarth | Thomas Gooding
+2373658 | 2373468
+dbozarth@chapman.edu | tgooding@chapman.edu
 CPSC 350-02
 Assignment 5 - FileProcessor.cpp */
 
@@ -17,9 +17,9 @@ Return: none
 Parameters: none (default constructor)
 Exceptions: none
 */
+//creates a new queue of students
 FileProcessor::FileProcessor(){
 queue = new GenQueue<Student*>();
-// ticks = new GenQueue<int>();
 totalWindows = 0;
 }
 
@@ -30,8 +30,7 @@ Parameters: none (destructor)
 Exceptions: none
 */
 FileProcessor::~FileProcessor(){
-delete queue;
-// delete ticks;
+  delete queue;
 }
 
 /*
@@ -40,6 +39,8 @@ Return: void
 Parameters: string inputFilePath
 Exceptions: none
 */
+//opens the file and stores the corresponding information given by the input file
+//it creates student objects and stores them in the queue
 void FileProcessor::processFile(string inputFilePath){
   string fileLine;
   ifstream input (inputFilePath);
@@ -54,19 +55,13 @@ void FileProcessor::processFile(string inputFilePath){
     int numStudents;
     int clockTick;
     while ( getline(input,fileLine) ){
-        // cout << fileLine << endl;
-        // cout << endl;
         clockTick = stoi(fileLine);
-        // cout << "clock tick: " << clockTick << endl;
         getline(input,str);
         numStudents = stoi(str);
-        // cout << "Number of students: " << numStudents << endl;
         for (int i = 0; i < numStudents; ++i){
           getline(input,str);
-          // cout << "wait time: " << str << endl;
           int windTime = stoi(str);
           Student *s1 = new Student(clockTick, windTime);
-          // ticks->insert(clockTick);
           queue->insert(s1);
         }
     }

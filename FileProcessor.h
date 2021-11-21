@@ -1,6 +1,6 @@
-/* Drew Bozarth
-2373658
-dbozarth@chapman.edu
+/* Drew Bozarth | Thomas Gooding
+2373658 | 2373468
+dbozarth@chapman.edu | tgooding@chapman.edu
 CPSC 350-02
 Assignment 5 - FileProcessor.h */
 
@@ -15,10 +15,11 @@ This is the .h file for FileProcessor
 #include <iostream>
 #include <fstream>
 #include <exception>
+//includes the GenQueue.h template class, and Window.h and Student.h files
 #include "GenQueue.h"
 #include "Window.h"
 #include "Student.h"
-
+//standard namespace libaray in C++
 using namespace std;
 
 class FileProcessor{
@@ -28,7 +29,6 @@ class FileProcessor{
     ~FileProcessor();
     void processFile(string inputFilePath);
     GenQueue<Student*> *queue;
-    // GenQueue<int> *ticks;
     int totalWindows;
 };
 //end of the header guards
