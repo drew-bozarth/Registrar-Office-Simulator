@@ -82,6 +82,7 @@ class DoublyLinkedList{
     virtual ~DoublyLinkedList();
     void insertFront(T d);
     void insertBack(T d);
+    void insertAfter(T currentNode, T newNode);
     T removeFront();
     T removeBack();
     T getFront();
@@ -90,6 +91,7 @@ class DoublyLinkedList{
     bool isEmpty();
     unsigned int getSize();
     void printList(bool isPrintLink);
+    void sort();
 };
 
 template <class T>
@@ -140,6 +142,21 @@ void DoublyLinkedList<T>::insertBack(T d){
   }
   back = node;
   ++size;
+}
+
+template <class T>
+void DoublyLinkedList<T>::insertAfter(T currentNode, T newNode){
+  ListNode<T>* current = front;
+  ListNode<T>* next = NULL;
+  while (current != currentNode){
+    next = current->next;
+    current = next;
+  }
+
+  newNode->next = current->next;
+  newNode->prev = current;
+  current->next->prev = newNode;
+  current->next = newNode;
 }
 
 template <class T>
@@ -290,6 +307,33 @@ void DoublyLinkedList<T>::printList(bool printLink)
 }
 
 
+template <class T>
+void DoublyLinkedList<T>::sort() {
+  if (isEmpty())
+    return;
+
+  bool isSorted = false;
+
+  while (!isSorted){
+    ListNode<T> *curr = front;
+    int swapCount = 0;
+
+    while (curr->next != NULL){
+      if (curr->data > curr->next->data){
+        T temp = curr->data;
+        curr->data = curr->next->data;
+        curr->next->data = temp;
+        swapCount = 1;
+      }
+      curr = curr->next;
+    }
+
+    if (swapCount == 0){
+      isSorted = true;
+    }
+  }
+
+}
 
 
 #endif

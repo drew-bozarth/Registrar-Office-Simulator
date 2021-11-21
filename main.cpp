@@ -12,6 +12,7 @@ Main file for Assignment5
 #include "GenQueue.h"
 #include "FileProcessor.h"
 #include "Simulation.h"
+#include "ListInterface.h"
 // standard namespace library in C++
 using namespace std;
 /*
@@ -53,8 +54,6 @@ int main(int argc, char** argv){
   delete [] wind;
   */
 
-
-
   Simulation *sim = new Simulation();
   if(argc > 1){
     string userFilePath = argv[1];
@@ -68,7 +67,6 @@ int main(int argc, char** argv){
     return -1;
   }
   delete sim;
-//
-// delete gq;
+  //delete gq;
   return 0;
 }
